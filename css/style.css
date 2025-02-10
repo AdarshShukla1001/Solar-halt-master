@@ -574,3 +574,21 @@
 .footer .copyright a:hover {
     color: var(--primary);
 }
+
+
+
+ 
+        .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366; /* WhatsApp Green */
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.whatsapp-float:hover {
+    background-color: #1ebe57;
+    color: white;
+}
