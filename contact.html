@@ -39,6 +39,39 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
+    <style>
+      /* WhatsApp Floating Button */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 80px; /* Moved up to make space for call button */
+        right: 20px;
+        background-color: #25d366; /* WhatsApp Green */
+        color: white;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+      }
+    
+      .whatsapp-float:hover {
+        background-color: #1ebe57;
+        color: white;
+      }
+    
+      /* Call Floating Button */
+      .call-float {
+        position: fixed;
+        bottom: 20px; /* Below WhatsApp button */
+        right: 20px;
+        background-color: #007bff; /* Blue for call */
+        color: white;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+      }
+    
+      .call-float:hover {
+        background-color: #0056b3;
+        color: white;
+      }
+    </style>
   </head>
 
   <body>
@@ -267,6 +300,15 @@
     >
       <i class="bi bi-whatsapp"></i>
     </a>
+
+
+    <a
+    href="tel:+919818716079"
+    class="btn btn-lg btn-primary btn-lg-square rounded-circle call-float"
+  >
+    <i class="bi bi-telephone"></i>
+  </a>
+  
 
     <script>
       function submitButton(event) {
