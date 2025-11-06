@@ -1,103 +1,321 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Link from "next/link";
+import { 
+  ArrowRight, Check, ChevronDown, Award, Users, Wrench, Quote, 
+  Sun, Zap, Home, Shield, Building, GitBranch
+} from "lucide-react";
+import { useState } from "react";
+
+// A Complete Redesign for a Modern, Intuitive, and Clean User Interface
+export default function Page() {
+  const [formStatus, setFormStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setFormStatus("Submitting...");
+    const form = e.currentTarget;
+    
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      
+      if (response.ok) {
+        setFormStatus("Success! We will be in touch shortly.");
+        form.reset();
+      } else {
+        setFormStatus("Error. Please try again.");
+      }
+    } catch (error) {
+      setFormStatus("Error. Please try again.");
+    }
+    setIsSubmitting(false);
+  };
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="bg-white text-slate-900 antialiased">
+      
+      {/* 1. Hero Section */}
+      <section className="relative bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/img/carousel-1.jpg" 
+            alt="Solar panels on roof" 
+            className="w-full h-full object-cover opacity-10"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="container mx-auto px-6 lg:px-8 py-24 sm:py-32 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-center lg:text-left">
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900">
+                Your Future, Powered by the Sun
+              </h1>
+              <p className="mt-6 text-lg leading-8 text-slate-600">
+                We design and install high-efficiency solar energy systems for homes and businesses, delivering energy independence and significant long-term savings.
+              </p>
+              <div className="mt-10 flex items-center justify-center lg:justify-start gap-x-6">
+                <Link
+                  href="#quote"
+                  className="rounded-md bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors"
+                >
+                  Get a Free Quote
+                </Link>
+                <Link href="#process" className="text-sm font-semibold leading-6 text-slate-700 group">
+                  How It Works <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
+                </Link>
+              </div>
+            </div>
+            <div className="relative hidden lg:block">
+              <div className="rounded-2xl overflow-hidden shadow-2xl">
+                <img 
+                  src="/img/solar1.png" 
+                  alt="Solar panel installation" 
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-indigo-600 rounded-full opacity-10 blur-3xl"></div>
+              <div className="absolute -top-6 -right-6 w-48 h-48 bg-blue-600 rounded-full opacity-10 blur-3xl"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Key Metrics Section */}
+      <section className="container mx-auto px-6 lg:px-8 py-16">
+        <div className="border-t border-slate-200">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center pt-16">
+            {[
+              { number: "208+", label: "Happy Customers" },
+              { number: "234+", label: "Projects Completed" },
+              { number: "31", label: "Expert Technicians" },
+              { number: "99%", label: "Customer Satisfaction" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <p className="text-3xl sm:text-4xl font-bold tracking-tight text-indigo-600">{stat.number}</p>
+                <p className="mt-1 text-sm text-slate-500">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Process Section */}
+      <section id="process" className="py-20 sm:py-28 bg-white scroll-mt-20">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                From Consultation to Clean Energy in 4 Simple Steps
+              </h2>
+              <p className="mt-4 text-lg text-slate-600">
+                We've streamlined the entire process to make your transition to solar power seamless and hassle-free.
+              </p>
+              <div className="mt-12 space-y-8">
+                {[
+                  { number: '01', name: 'Consultation', description: 'We start with a free consultation to assess your energy needs and site suitability.' },
+                  { number: '02', name: 'Custom Design', description: 'Our experts design a bespoke solar system optimized for maximum efficiency.' },
+                  { number: '03', name: 'Installation', description: 'Certified technicians handle the complete installation with precision and care.' },
+                  { number: '04', name: 'Power On', description: 'Enjoy clean, renewable energy and watch your savings grow from day one.' },
+                ].map((step) => (
+                  <div key={step.name} className="flex gap-4">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">
+                        {step.number}
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-slate-900">{step.name}</h3>
+                      <p className="mt-2 text-slate-600">{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="relative">
+              <div className="rounded-2xl overflow-hidden shadow-2xl">
+                <img 
+                  src="/img/feature.jpg" 
+                  alt="Solar installation process" 
+                  className="w-full h-auto"
+                />
+              </div>
+              <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-indigo-600 rounded-full opacity-10 blur-3xl -z-10"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* 4. Core Solutions Section */}
+      <section className="py-20 sm:py-28 bg-slate-50">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Comprehensive Solar Solutions</h2>
+            <p className="mt-4 text-lg text-slate-600">
+              We offer a complete range of services to meet your specific renewable energy goals.
+            </p>
+          </div>
+          
+          {/* Feature Image Grid */}
+          <div className="mt-12 grid md:grid-cols-3 gap-6">
+            <div className="relative rounded-xl overflow-hidden h-64 group">
+              <img src="/img/carousel-2.jpg" alt="Residential Solar" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent flex items-end">
+                <div className="p-6">
+                  <h3 className="text-white font-bold text-xl">Residential</h3>
+                  <p className="text-slate-300 text-sm mt-1">Home solar systems</p>
+                </div>
+              </div>
+            </div>
+            <div className="relative rounded-xl overflow-hidden h-64 group">
+              <img src="/img/service-1.jpg" alt="Commercial Solar" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent flex items-end">
+                <div className="p-6">
+                  <h3 className="text-white font-bold text-xl">Commercial</h3>
+                  <p className="text-slate-300 text-sm mt-1">Business solutions</p>
+                </div>
+              </div>
+            </div>
+            <div className="relative rounded-xl overflow-hidden h-64 group">
+              <img src="/img/about.jpg" alt="Industrial Solar" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent flex items-end">
+                <div className="p-6">
+                  <h3 className="text-white font-bold text-xl">Industrial</h3>
+                  <p className="text-slate-300 text-sm mt-1">Large-scale installations</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { icon: Home, title: "On-Grid & Residential", description: "Integrate with the grid to lower bills and earn credits." },
+              { icon: Building, title: "Off-Grid & Commercial", description: "Achieve energy independence for your business or remote property." },
+              { icon: GitBranch, title: "Hybrid Solutions", description: "Combine grid-tied benefits with battery backup for uninterrupted power." },
+              { icon: Wrench, title: "System Maintenance", description: "Ensure peak performance with our professional maintenance services." },
+              { icon: Zap, title: "Energy Audits", description: "Identify opportunities to optimize your energy consumption and savings." },
+              { icon: Award, title: "#1 In India", description: "Join hundreds of satisfied clients across the nation." },
+            ].map((service) => (
+              <div key={service.title} className="p-8 bg-white rounded-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-slate-100">
+                <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+                  <service.icon className="w-6 h-6 text-indigo-600" />
+                </div>
+                <h3 className="mt-6 text-lg font-semibold">{service.title}</h3>
+                <p className="mt-2 text-slate-600">{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Testimonial Section */}
+      <section className="bg-slate-900 py-20 sm:py-28">
+        <div className="container mx-auto px-6 lg:px-8">
+          <figure className="max-w-4xl mx-auto text-center">
+            <Quote className="h-12 w-12 mx-auto text-slate-500" />
+            <blockquote className="mt-8 text-xl font-medium text-white sm:text-2xl leading-relaxed">
+              <p>&ldquo;The best investment we made for our factory! The industrial solar system has significantly reduced our operational costs. The quality and service from the entire team were outstanding from start to finish.&rdquo;</p>
+            </blockquote>
+            <figcaption className="mt-8 flex items-center justify-center gap-x-3">
+              <img className="h-12 w-12 rounded-full" src="/img/testimonial-3.jpg" alt="Amit Patel" />
+              <div className="text-sm">
+                <div className="font-semibold text-white">Amit Patel</div>
+                <div className="text-slate-400">Factory Owner</div>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+      
+      {/* 6. FAQ Section */}
+      <section className="py-20 sm:py-28">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Frequently Asked Questions</h2>
+            <p className="mt-4 text-lg text-slate-600">
+              Everything you need to know before making the switch to solar.
+            </p>
+          </div>
+          <div className="mt-16 max-w-3xl mx-auto divide-y divide-slate-200">
+            {[
+              { q: 'Why should I choose your company?', a: 'We guarantee Quality Assurance with premium solar panels, provide Expert Consultation, offer Long-Term Support, and ensure Professional Installation by certified technicians.' },
+              { q: 'How much can I save on my electricity bills?', a: 'Savings vary, but many of our residential clients see reductions of up to 70% or more. We provide a detailed savings estimate during your free consultation.' },
+              { q: 'What kind of warranties do you offer?', a: 'We use Tier-1 solar panels and inverters that come with industry-leading performance and hardware warranties, typically 25 years for panels.' },
+              { q: 'How long does the installation process take?', a: 'A typical residential installation is completed within 1-3 days. Commercial projects may vary depending on the system size and complexity.' },
+            ].map((faq) => (
+              <details key={faq.q} className="group py-6" open={faq.q === 'Why should I choose your company?'}>
+                <summary className="flex cursor-pointer items-center justify-between text-lg font-medium list-none">
+                  {faq.q}
+                  <ChevronDown className="h-6 w-6 transition-transform duration-300 group-open:rotate-180" />
+                </summary>
+                <p className="mt-4 text-slate-600 leading-relaxed">{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* 7. Team Section */}
+      <section className="py-20 sm:py-28 bg-slate-50">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Meet the Experts</h2>
+            <p className="mt-4 text-lg text-slate-600">
+              Our experienced leadership team is dedicated to a sustainable future.
+            </p>
+          </div>
+          <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+            {[
+              { name: "Raj Kumar", role: "CEO & Founder", image: "/img/team-1.jpg" },
+              { name: "Priya Singh", role: "Chief Engineer", image: "/img/team-2.jpg" },
+              { name: "Amit Patel", role: "Operations Manager", image: "/img/team-3.jpg" },
+            ].map((member) => (
+              <div key={member.name} className="text-center group">
+                <div className="relative mx-auto w-32 h-32 mb-6">
+                  <img 
+                    className="w-full h-full rounded-full object-cover ring-4 ring-white shadow-lg group-hover:shadow-2xl transition-shadow" 
+                    src={member.image} 
+                    alt={member.name} 
+                  />
+                  <div className="absolute inset-0 rounded-full bg-indigo-600 opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                </div>
+                <h3 className="text-lg font-semibold">{member.name}</h3>
+                <p className="text-indigo-600 mt-1">{member.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. Final CTA & Quote Form Section */}
+      <section id="quote" className="py-20 sm:py-28 bg-white scroll-mt-20">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="relative isolate overflow-hidden bg-slate-900 px-6 py-20 sm:rounded-3xl sm:px-16">
+             <div className="absolute top-0 left-0 -z-10 h-full w-full">
+              <img src="/img/quote.jpg" alt="Solar panel close up" className="object-cover h-full w-full opacity-20"/>
+            </div>
+            <div className="max-w-2xl mx-auto text-center">
+              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Ready to Make the Switch?</h2>
+              <p className="mt-4 text-lg text-slate-300">
+                Get a free, personalized quote today and find out how much you can save with solar.
+              </p>
+              <form onSubmit={handleSubmit} className="mt-10 mx-auto max-w-md space-y-4">
+                <input type="text" name="name" placeholder="Your Name" required className="w-full rounded-md border-0 bg-white/5 px-4 py-3 text-white ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500" />
+                <input type="email" name="email" placeholder="Your Email" required className="w-full rounded-md border-0 bg-white/5 px-4 py-3 text-white ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500" />
+                <button type="submit" disabled={isSubmitting} className="w-full rounded-md bg-indigo-600 px-6 py-3 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-500 transition-colors">
+                  {isSubmitting ? "Sending..." : "Request My Free Quote"}
+                </button>
+                {formStatus && <p className="text-sm mt-3 text-slate-300">{formStatus}</p>}
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
   );
 }
