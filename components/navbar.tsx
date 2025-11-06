@@ -33,12 +33,12 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative w-12 h-12 lg:w-14 lg:h-14 overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition-shadow">
+            <div className="relative w-10 h-10 lg:w-12 lg:h-12 overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition-shadow">
               <Image
                 src="/img/logo_new.png"
                 alt="Santori Solar"
                 fill
-                className="object-cover group-hover:scale-110 transition-transform duration-300"
+                className="object-contain scale-75 group-hover:scale-90 transition-transform duration-300"
               />
             </div>
             <div className="hidden sm:block">

@@ -7,6 +7,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   output: "export",
+  images: { unoptimized: true },
 
   // ✅ Ignore ESLint errors during production builds
   eslint: {

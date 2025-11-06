@@ -268,23 +268,21 @@ export default function Page() {
               Our experienced leadership team is dedicated to a sustainable future.
             </p>
           </div>
-          <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+          <div className="mt-16 flex flex-col items-center gap-12 md:flex-row md:justify-center md:gap-20">
             {[
-              { name: "Raj Kumar", role: "CEO & Founder", image: "/img/team-1.jpg" },
-              { name: "Priya Singh", role: "Chief Engineer", image: "/img/team-2.jpg" },
-              { name: "Amit Patel", role: "Operations Manager", image: "/img/team-3.jpg" },
+              { name: "Deepak Pandey", role: "CEO & Founder", image: "/team/ceo_Deepak_pandey.jpg" },
+              { name: "Rudra Sahani", role: "Sr. Solar Consultant", image: "/team/rudra_sahani_sr_solar_consultant.jpg" },
             ].map((member) => (
-              <div key={member.name} className="text-center group">
-                <div className="relative mx-auto w-32 h-32 mb-6">
-                  <img 
-                    className="w-full h-full rounded-full object-cover ring-4 ring-white shadow-lg group-hover:shadow-2xl transition-shadow" 
-                    src={member.image} 
-                    alt={member.name} 
+              <div key={member.name} className="flex flex-col items-center text-center max-w-xs">
+                <div className="relative w-44 h-44 md:w-56 md:h-56 mb-6">
+                  <img
+                    className="w-full h-full rounded-full object-cover ring-4 ring-white shadow-xl"
+                    src={member.image}
+                    alt={member.name}
                   />
-                  <div className="absolute inset-0 rounded-full bg-indigo-600 opacity-0 group-hover:opacity-10 transition-opacity"></div>
                 </div>
-                <h3 className="text-lg font-semibold">{member.name}</h3>
-                <p className="text-indigo-600 mt-1">{member.role}</p>
+                <h3 className="text-xl font-semibold text-slate-900">{member.name}</h3>
+                <p className="text-indigo-600 mt-1 font-medium">{member.role}</p>
               </div>
             ))}
           </div>
