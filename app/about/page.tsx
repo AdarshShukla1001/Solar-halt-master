@@ -8,10 +8,10 @@ export default function AboutPage() {
     <main className="bg-white text-slate-900 antialiased">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-slate-50 to-white overflow-hidden">
-          <div className="absolute inset-0 z-0">
-          <img 
-            src="/img/about.jpg" 
-            alt="Solar company team" 
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/img/about.jpg"
+            alt="Solar company team"
             className="w-full h-full object-cover opacity-10"
           />
         </div>
@@ -38,9 +38,9 @@ export default function AboutPage() {
             </div>
             <div className="relative hidden lg:block">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="/img/feature.jpg" 
-                  alt="Our team at work" 
+                <img
+                  src="/img/feature.jpg"
+                  alt="Our team at work"
                   className="w-full h-auto"
                 />
               </div>
@@ -94,44 +94,30 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section id="team" className="py-24 bg-slate-50">
+      <section className="py-20 sm:py-28 bg-slate-50">
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Meet Our Team</h2>
-            <p className="mt-6 text-lg leading-8 text-slate-600">
-              Experts dedicated to bringing solar solutions to life
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Meet the Experts</h2>
+            <p className="mt-4 text-lg text-slate-600">
+              Our experienced leadership team is dedicated to a sustainable future.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="mt-16 flex flex-col items-center gap-12 md:flex-row md:justify-center md:gap-20">
             {[
-              {
-                name: "John Smith",
-                role: "CEO & Founder",
-                image: "/img/team-1.jpg"
-              },
-              {
-                name: "Sarah Johnson",
-                role: "Technical Director",
-                image: "/img/team-2.jpg"
-              },
-              {
-                name: "Michael Brown",
-                role: "Installation Manager",
-                image: "/img/team-3.jpg"
-              }
-            ].map((member, index) => (
-              <div key={index} className="group relative">
-                <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white">
+              { name: "Deepak Pandey", role: "CEO & Founder", image: "/team/ceo_Deepak_pandey.jpg" },
+              { name: "Sachin Pandey", role: "Co-Founder", image: "/img/team-1.jpg" },
+              { name: "Rudra Sahani", role: "Sr. Solar Consultant", image: "/team/rudra_sahani_sr_solar_consultant.jpg" },
+            ].map((member) => (
+              <div key={member.name} className="flex flex-col items-center text-center max-w-xs">
+                <div className="relative w-44 h-44 md:w-56 md:h-56 mb-6">
                   <img
+                    className="w-full h-full rounded-full object-cover ring-4 ring-white shadow-xl"
                     src={member.image}
                     alt={member.name}
-                    className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
-                <div className="mt-4">
-                  <h3 className="text-xl font-semibold text-slate-900">{member.name}</h3>
-                  <p className="text-sm text-slate-600">{member.role}</p>
-                </div>
+                <h3 className="text-xl font-semibold text-slate-900">{member.name}</h3>
+                <p className="text-indigo-600 mt-1 font-medium">{member.role}</p>
               </div>
             ))}
           </div>

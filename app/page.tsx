@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { 
-  ArrowRight, Check, ChevronDown, Award, Users, Wrench, Quote, 
+import {
+  ArrowRight, Check, ChevronDown, Award, Users, Wrench, Quote,
   Sun, Zap, Home, Shield, Building, GitBranch
 } from "lucide-react";
 import { useState } from "react";
+import TestimonialsSlider from "@/components/TestimonialsSlider";
 
 // A Complete Redesign for a Modern, Intuitive, and Clean User Interface
 export default function Page() {
@@ -17,14 +18,14 @@ export default function Page() {
     setIsSubmitting(true);
     setFormStatus("Submitting...");
     const form = e.currentTarget;
-    
+
     try {
       const response = await fetch(form.action, {
         method: form.method,
         body: new FormData(form),
         headers: { Accept: "application/json" },
       });
-      
+
       if (response.ok) {
         setFormStatus("Success! We will be in touch shortly.");
         form.reset();
@@ -39,13 +40,13 @@ export default function Page() {
 
   return (
     <main className="bg-white text-slate-900 antialiased">
-      
+
       {/* 1. Hero Section */}
       <section className="relative bg-gradient-to-b from-slate-50 to-white overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/img/carousel-1.jpg" 
-            alt="Solar panels on roof" 
+          <img
+            src="/img/carousel-1.jpg"
+            alt="Solar panels on roof"
             className="w-full h-full object-cover opacity-10"
           />
         </div>
@@ -72,9 +73,9 @@ export default function Page() {
             </div>
             <div className="relative hidden lg:block">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="/img/solar1.png" 
-                  alt="Solar panel installation" 
+                <img
+                  src="/img/solar1.png"
+                  alt="Solar panel installation"
                   className="w-full h-auto"
                 />
               </div>
@@ -138,9 +139,9 @@ export default function Page() {
             </div>
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="/img/feature.jpg" 
-                  alt="Solar installation process" 
+                <img
+                  src="/img/feature.jpg"
+                  alt="Solar installation process"
                   className="w-full h-auto"
                 />
               </div>
@@ -149,7 +150,7 @@ export default function Page() {
           </div>
         </div>
       </section>
-      
+
       {/* 4. Core Solutions Section */}
       <section className="py-20 sm:py-28 bg-slate-50">
         <div className="container mx-auto px-6 lg:px-8">
@@ -159,7 +160,7 @@ export default function Page() {
               We offer a complete range of services to meet your specific renewable energy goals.
             </p>
           </div>
-          
+
           {/* Feature Image Grid */}
           <div className="mt-12 grid md:grid-cols-3 gap-6">
             <div className="relative rounded-xl overflow-hidden h-64 group">
@@ -215,22 +216,10 @@ export default function Page() {
       {/* 5. Testimonial Section */}
       <section className="bg-slate-900 py-20 sm:py-28">
         <div className="container mx-auto px-6 lg:px-8">
-          <figure className="max-w-4xl mx-auto text-center">
-            <Quote className="h-12 w-12 mx-auto text-slate-500" />
-            <blockquote className="mt-8 text-xl font-medium text-white sm:text-2xl leading-relaxed">
-              <p>&ldquo;The best investment we made for our factory! The industrial solar system has significantly reduced our operational costs. The quality and service from the entire team were outstanding from start to finish.&rdquo;</p>
-            </blockquote>
-            <figcaption className="mt-8 flex items-center justify-center gap-x-3">
-              <img className="h-12 w-12 rounded-full" src="/img/testimonial-3.jpg" alt="Amit Patel" />
-              <div className="text-sm">
-                <div className="font-semibold text-white">Amit Patel</div>
-                <div className="text-slate-400">Factory Owner</div>
-              </div>
-            </figcaption>
-          </figure>
+          <TestimonialsSlider />
         </div>
       </section>
-      
+
       {/* 6. FAQ Section */}
       <section className="py-20 sm:py-28">
         <div className="container mx-auto px-6 lg:px-8">
@@ -258,7 +247,7 @@ export default function Page() {
           </div>
         </div>
       </section>
-      
+
       {/* 7. Team Section */}
       <section className="py-20 sm:py-28 bg-slate-50">
         <div className="container mx-auto px-6 lg:px-8">
@@ -271,6 +260,7 @@ export default function Page() {
           <div className="mt-16 flex flex-col items-center gap-12 md:flex-row md:justify-center md:gap-20">
             {[
               { name: "Deepak Pandey", role: "CEO & Founder", image: "/team/ceo_Deepak_pandey.jpg" },
+              { name: "Sachin Pandey", role: "Co-Founder", image: "/img/team-1.jpg" },
               { name: "Rudra Sahani", role: "Sr. Solar Consultant", image: "/team/rudra_sahani_sr_solar_consultant.jpg" },
             ].map((member) => (
               <div key={member.name} className="flex flex-col items-center text-center max-w-xs">
@@ -293,8 +283,8 @@ export default function Page() {
       <section id="quote" className="py-20 sm:py-28 bg-white scroll-mt-20">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="relative isolate overflow-hidden bg-slate-900 px-6 py-20 sm:rounded-3xl sm:px-16">
-             <div className="absolute top-0 left-0 -z-10 h-full w-full">
-              <img src="/img/quote.jpg" alt="Solar panel close up" className="object-cover h-full w-full opacity-20"/>
+            <div className="absolute top-0 left-0 -z-10 h-full w-full">
+              <img src="/img/quote.jpg" alt="Solar panel close up" className="object-cover h-full w-full opacity-20" />
             </div>
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Ready to Make the Switch?</h2>

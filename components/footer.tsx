@@ -43,7 +43,16 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-indigo-500 flex-shrink-0 mt-1" />
-                <span className="text-sm text-slate-400">123 Solar Street, Uttar Pradesh, India</span>
+                <div className="flex flex-col gap-2">
+                  <div>
+                    <span className="text-xs font-semibold text-white uppercase tracking-wider">HQ Address</span>
+                    <p className="text-sm text-slate-400 mt-1">Mariahu Road, near City Station, Jaunpur Uttar Pradesh 222001</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-semibold text-white uppercase tracking-wider">Regional Office</span>
+                    <p className="text-sm text-slate-400 mt-1">1st floor Trilochan Vatika Building, Rananagar Colony, Lahartara Boulia Varanasi UP 221002</p>
+                  </div>
+                </div>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-indigo-500 flex-shrink-0" />
@@ -72,8 +81,8 @@ export default function Footer() {
                 { name: "Contact", href: "/contact" },
               ].map((link) => (
                 <li key={link.name}>
-                  <Link 
-                    href={link.href} 
+                  <Link
+                    href={link.href}
                     className="text-sm text-slate-400 hover:text-white transition-colors inline-flex items-center"
                   >
                     <ChevronRight className="w-4 h-4 mr-2" />
@@ -96,8 +105,8 @@ export default function Footer() {
                 "Solar Maintenance",
               ].map((service) => (
                 <li key={service}>
-                  <Link 
-                    href="/services" 
+                  <Link
+                    href="/services"
                     className="text-sm text-slate-400 hover:text-white transition-colors inline-flex items-center"
                   >
                     <ChevronRight className="w-4 h-4 mr-2" />

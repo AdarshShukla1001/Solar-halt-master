@@ -13,14 +13,14 @@ export default function ContactPage() {
     setIsSubmitting(true);
     setFormStatus("Submitting...");
     const form = e.currentTarget;
-    
+
     try {
       const response = await fetch(form.action, {
         method: form.method,
         body: new FormData(form),
         headers: { Accept: "application/json" },
       });
-      
+
       if (response.ok) {
         setFormStatus("Message sent successfully!");
         form.reset();
@@ -38,33 +38,20 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-slate-50 to-white overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/img/carousel-1.jpg" 
-            alt="Customer service" 
+          <img
+            src="/img/carousel-1.jpg"
+            alt="Customer service"
             className="w-full h-full object-cover opacity-10"
           />
         </div>
         <div className="container mx-auto px-6 lg:px-8 py-24 sm:py-32 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900">
-                Let's Talk Solar
-              </h1>
-              <p className="mt-6 text-lg leading-8 text-slate-600">
-                Have questions about solar energy? Want to get started with your installation? We're here to help every step of the way.
-              </p>
-            </div>
-            <div className="relative hidden lg:block">
-              <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="/img/testimonial-1.jpg" 
-                  alt="Our support team" 
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-indigo-600 rounded-full opacity-10 blur-3xl"></div>
-              <div className="absolute -top-6 -right-6 w-48 h-48 bg-blue-600 rounded-full opacity-10 blur-3xl"></div>
-            </div>
+          <div className="max-w-2xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900">
+              Let's Talk Solar
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-slate-600">
+              Have questions about solar energy? Want to get started with your installation? We're here to help every step of the way.
+            </p>
           </div>
         </div>
       </section>
@@ -82,9 +69,15 @@ export default function ContactPage() {
                 {[
                   {
                     icon: MapPin,
-                    title: "Visit Us",
-                    content: "123 Solar Street, Energy City, 12345",
-                    link: "https://maps.google.com"
+                    title: "HQ Address",
+                    content: "Mariahu Road, near City Station, Jaunpur Uttar Pradesh 222001",
+                    link: "https://maps.google.com/?q=Mariahu+Road,+near+City+Station,+Jaunpur+Uttar+Pradesh+222001"
+                  },
+                  {
+                    icon: MapPin,
+                    title: "Regional Office",
+                    content: "1st floor Trilochan Vatika Building, Rananagar Colony, Lahartara Boulia Varanasi UP 221002",
+                    link: "https://maps.google.com/?q=1st+floor+Trilochan+Vatika+Building,+Rananagar+Colony,+Lahartara+Boulia+Varanasi+UP+221002"
                   },
                   {
                     icon: Phone,
@@ -113,7 +106,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
                       {item.link ? (
-                        <Link 
+                        <Link
                           href={item.link}
                           className="text-slate-600 hover:text-indigo-600 transition-colors"
                         >
