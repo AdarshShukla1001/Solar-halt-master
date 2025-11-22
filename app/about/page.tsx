@@ -94,7 +94,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 sm:py-28 bg-slate-50">
+      <section id="team" className="py-20 sm:py-28 bg-slate-50">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Meet the Experts</h2>
@@ -102,11 +102,30 @@ export default function AboutPage() {
               Our experienced leadership team is dedicated to a sustainable future.
             </p>
           </div>
-          <div className="mt-16 flex flex-col items-center gap-12 md:flex-row md:justify-center md:gap-20">
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 justify-items-center max-w-4xl mx-auto">
+            {/* First Row - CEO & Co-Founder */}
             {[
               { name: "Deepak Pandey", role: "CEO & Founder", image: "/team/ceo_Deepak_pandey.jpg" },
-              { name: "Sachin Pandey", role: "Co-Founder", image: "/img/team-1.jpg" },
+              { name: "Sachin Pandey", role: "Co-Founder", image: "/team/sachin-pandey.png" },
+            ].map((member) => (
+              <div key={member.name} className="flex flex-col items-center text-center max-w-xs">
+                <div className="relative w-44 h-44 md:w-56 md:h-56 mb-6">
+                  <img
+                    className="w-full h-full rounded-full object-cover ring-4 ring-white shadow-xl"
+                    src={member.image}
+                    alt={member.name}
+                  />
+                </div>
+                <h3 className="text-xl font-semibold text-slate-900">{member.name}</h3>
+                <p className="text-indigo-600 mt-1 font-medium">{member.role}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 justify-items-center max-w-4xl mx-auto">
+            {/* Second Row - Other team members */}
+            {[
               { name: "Rudra Sahani", role: "Sr. Solar Consultant", image: "/team/rudra_sahani_sr_solar_consultant.jpg" },
+              { name: "Sarvesh Chaubey", role: "Business Development", image: "/team/sarvesh-chaube.png" },
             ].map((member) => (
               <div key={member.name} className="flex flex-col items-center text-center max-w-xs">
                 <div className="relative w-44 h-44 md:w-56 md:h-56 mb-6">

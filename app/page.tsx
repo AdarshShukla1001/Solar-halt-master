@@ -10,33 +10,7 @@ import TestimonialsSlider from "@/components/TestimonialsSlider";
 
 // A Complete Redesign for a Modern, Intuitive, and Clean User Interface
 export default function Page() {
-  const [formStatus, setFormStatus] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setFormStatus("Submitting...");
-    const form = e.currentTarget;
-
-    try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
-      });
-
-      if (response.ok) {
-        setFormStatus("Success! We will be in touch shortly.");
-        form.reset();
-      } else {
-        setFormStatus("Error. Please try again.");
-      }
-    } catch (error) {
-      setFormStatus("Error. Please try again.");
-    }
-    setIsSubmitting(false);
-  };
 
   return (
     <main className="bg-white text-slate-900 antialiased">
@@ -61,7 +35,7 @@ export default function Page() {
               </p>
               <div className="mt-10 flex items-center justify-center lg:justify-start gap-x-6">
                 <Link
-                  href="#quote"
+                  href="/contact"
                   className="rounded-md bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors"
                 >
                   Get a Free Quote
@@ -257,11 +231,11 @@ export default function Page() {
               Our experienced leadership team is dedicated to a sustainable future.
             </p>
           </div>
-          <div className="mt-16 flex flex-col items-center gap-12 md:flex-row md:justify-center md:gap-20">
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 justify-items-center max-w-4xl mx-auto">
+            {/* First Row - CEO & Co-Founder */}
             {[
               { name: "Deepak Pandey", role: "CEO & Founder", image: "/team/ceo_Deepak_pandey.jpg" },
-              { name: "Sachin Pandey", role: "Co-Founder", image: "/img/team-1.jpg" },
-              { name: "Rudra Sahani", role: "Sr. Solar Consultant", image: "/team/rudra_sahani_sr_solar_consultant.jpg" },
+              { name: "Sachin Pandey", role: "Co-Founder", image: "/team/sachin-pandey.png" },
             ].map((member) => (
               <div key={member.name} className="flex flex-col items-center text-center max-w-xs">
                 <div className="relative w-44 h-44 md:w-56 md:h-56 mb-6">
@@ -276,30 +250,24 @@ export default function Page() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* 8. Final CTA & Quote Form Section */}
-      <section id="quote" className="py-20 sm:py-28 bg-white scroll-mt-20">
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="relative isolate overflow-hidden bg-slate-900 px-6 py-20 sm:rounded-3xl sm:px-16">
-            <div className="absolute top-0 left-0 -z-10 h-full w-full">
-              <img src="/img/quote.jpg" alt="Solar panel close up" className="object-cover h-full w-full opacity-20" />
-            </div>
-            <div className="max-w-2xl mx-auto text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Ready to Make the Switch?</h2>
-              <p className="mt-4 text-lg text-slate-300">
-                Get a free, personalized quote today and find out how much you can save with solar.
-              </p>
-              <form onSubmit={handleSubmit} className="mt-10 mx-auto max-w-md space-y-4">
-                <input type="text" name="name" placeholder="Your Name" required className="w-full rounded-md border-0 bg-white/5 px-4 py-3 text-white ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500" />
-                <input type="email" name="email" placeholder="Your Email" required className="w-full rounded-md border-0 bg-white/5 px-4 py-3 text-white ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500" />
-                <button type="submit" disabled={isSubmitting} className="w-full rounded-md bg-indigo-600 px-6 py-3 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-500 transition-colors">
-                  {isSubmitting ? "Sending..." : "Request My Free Quote"}
-                </button>
-                {formStatus && <p className="text-sm mt-3 text-slate-300">{formStatus}</p>}
-              </form>
-            </div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 justify-items-center max-w-4xl mx-auto">
+            {/* Second Row - Other team members */}
+            {[
+              { name: "Rudra Sahani", role: "Sr. Solar Consultant", image: "/team/rudra_sahani_sr_solar_consultant.jpg" },
+              { name: "Sarvesh Chaubey", role: "Business Development", image: "/team/sarvesh-chaube.png" },
+            ].map((member) => (
+              <div key={member.name} className="flex flex-col items-center text-center max-w-xs">
+                <div className="relative w-44 h-44 md:w-56 md:h-56 mb-6">
+                  <img
+                    className="w-full h-full rounded-full object-cover ring-4 ring-white shadow-xl"
+                    src={member.image}
+                    alt={member.name}
+                  />
+                </div>
+                <h3 className="text-xl font-semibold text-slate-900">{member.name}</h3>
+                <p className="text-indigo-600 mt-1 font-medium">{member.role}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

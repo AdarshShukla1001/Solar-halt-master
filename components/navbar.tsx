@@ -22,12 +22,11 @@ export default function Navbar() {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <nav 
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "bg-white/95 backdrop-blur-md shadow-lg" 
-          : "bg-white shadow-sm"
-      }`}
+    <nav
+      className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-white/95 backdrop-blur-md shadow-lg"
+        : "bg-white shadow-sm"
+        }`}
     >
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex items-center justify-between h-20">
@@ -54,7 +53,7 @@ export default function Navbar() {
             {[
               { name: "Home", path: "/" },
               { name: "Services", path: "/services" },
-              { name: "Projects", path: "/projects" },
+              { name: "Gallery", path: "/gallery" },
               { name: "Calculator", path: "/calculator" },
               { name: "About", path: "/about" },
               { name: "Contact", path: "/contact" },
@@ -62,11 +61,10 @@ export default function Navbar() {
               <Link
                 key={item.path}
                 href={item.path}
-                className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
-                  isActive(item.path)
-                    ? "text-indigo-600 bg-indigo-50"
-                    : "text-slate-700 hover:text-indigo-600 hover:bg-slate-50"
-                }`}
+                className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-lg ${isActive(item.path)
+                  ? "text-indigo-600 bg-indigo-50"
+                  : "text-slate-700 hover:text-indigo-600 hover:bg-slate-50"
+                  }`}
               >
                 {item.name}
                 {isActive(item.path) && (
@@ -99,27 +97,25 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-300 ${
-            isOpen ? "max-h-96 py-4" : "max-h-0"
-          }`}
+          className={`lg:hidden overflow-hidden transition-all duration-300 ${isOpen ? "max-h-96 py-4" : "max-h-0"
+            }`}
         >
           <div className="flex flex-col space-y-2 pt-2 border-t">
             {[
               { name: "Home", path: "/" },
               { name: "About", path: "/about" },
               { name: "Services", path: "/services" },
-              { name: "Projects", path: "/projects" },
+              { name: "Gallery", path: "/gallery" },
               { name: "Calculator", path: "/calculator" },
               { name: "Contact", path: "/contact" },
             ].map((item) => (
               <Link
                 key={item.path}
                 href={item.path}
-                className={`px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
-                  isActive(item.path)
-                    ? "bg-indigo-50 text-indigo-600"
-                    : "text-slate-700 hover:bg-slate-50"
-                }`}
+                className={`px-4 py-3 text-sm font-medium rounded-lg transition-colors ${isActive(item.path)
+                  ? "bg-indigo-50 text-indigo-600"
+                  : "text-slate-700 hover:bg-slate-50"
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}

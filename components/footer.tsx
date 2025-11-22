@@ -4,30 +4,7 @@ import { MapPin, Phone, Mail, ChevronRight, Facebook, Twitter, Linkedin, Instagr
 export default function Footer() {
   return (
     <footer className="bg-slate-900 text-slate-300">
-      {/* Newsletter Section */}
-      <div className="border-b border-slate-800">
-        <div className="container mx-auto px-6 lg:px-8 py-12">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-2">Stay Updated</h3>
-              <p className="text-slate-400">Subscribe to our newsletter for solar energy tips and updates</p>
-            </div>
-            <form className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 rounded-md bg-slate-800 border-transparent px-4 py-2 text-slate-300 placeholder:text-slate-500 focus:border-indigo-500 focus:ring-indigo-500"
-              />
-              <button
-                type="submit"
-                className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+
 
       {/* Main Footer Content */}
       <div className="container mx-auto px-6 lg:px-8 py-16">
@@ -77,7 +54,7 @@ export default function Footer() {
                 { name: "Home", href: "/" },
                 { name: "About Us", href: "/about" },
                 { name: "Services", href: "/services" },
-                { name: "Projects", href: "/projects" },
+                { name: "Gallery", href: "/gallery" },
                 { name: "Contact", href: "/contact" },
               ].map((link) => (
                 <li key={link.name}>
@@ -147,10 +124,10 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               {[
-                { icon: Facebook, href: "#" },
-                { icon: Twitter, href: "#" },
-                { icon: Linkedin, href: "#" },
-                { icon: Instagram, href: "#" },
+                { icon: Facebook, href: "https://facebook.com/santorisolar" },
+                { icon: Twitter, href: "https://twitter.com/santorisolar" },
+                { icon: Linkedin, href: "https://linkedin.com/company/santorisolar" },
+                { icon: Instagram, href: "https://instagram.com/santorisolar" },
               ].map((social, index) => (
                 <a
                   key={index}

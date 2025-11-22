@@ -1,36 +1,35 @@
 "use client";
 
 import Link from "next/link";
-import { MapPin, Phone, Mail, Clock, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ArrowRight, CheckCircle } from "lucide-react";
 import { useState } from "react";
 
 export default function ContactPage() {
-  const [formStatus, setFormStatus] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setFormStatus("Submitting...");
     const form = e.currentTarget;
+    const formData = new FormData(form);
 
     try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
       });
 
       if (response.ok) {
-        setFormStatus("Message sent successfully!");
+        setSubmitted(true);
         form.reset();
-      } else {
-        setFormStatus("Error sending message. Please try again.");
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 5000);
       }
     } catch (error) {
-      setFormStatus("Error sending message. Please try again.");
+      console.error("Error:", error);
     }
-    setIsSubmitting(false);
   };
 
   return (
@@ -82,14 +81,14 @@ export default function ContactPage() {
                   {
                     icon: Phone,
                     title: "Call Us",
-                    content: "+1 (555) 123-4567",
-                    link: "tel:+15551234567"
+                    content: "+91 98187 16079",
+                    link: "tel:+919818716079"
                   },
                   {
                     icon: Mail,
                     title: "Email Us",
-                    content: "info@santori-solar.com",
-                    link: "mailto:info@santori-solar.com"
+                    content: "support@santorisolarsolutions.com",
+                    link: "mailto:support@santorisolarsolutions.com"
                   },
                   {
                     icon: Clock,
@@ -122,70 +121,93 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm ring-1 ring-slate-200">
-              <form onSubmit={handleSubmit} action="/api/contact" method="POST" className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-slate-700">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    required
-                    className="mt-1 block w-full rounded-md border-slate-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-slate-700">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    required
-                    className="mt-1 block w-full rounded-md border-slate-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-slate-700">
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    id="phone"
-                    className="mt-1 block w-full rounded-md border-slate-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-700">
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    id="message"
-                    rows={4}
-                    required
-                    className="mt-1 block w-full rounded-md border-slate-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  ></textarea>
-                </div>
-                <div>
+            <div className="bg-white p-8 rounded-2xl shadow-lg ring-1 ring-slate-100">
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">Send us a Message</h3>
+              
+              {submitted ? (
+                <div className="flex flex-col items-center justify-center py-12">
+                  <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
+                  <h4 className="text-2xl font-bold text-slate-900 mb-2">Thank You!</h4>
+                  <p className="text-slate-600 text-center mb-6">
+                    We appreciate your interest in Santori Solar Solutions. Our team will get back to you shortly with more information.
+                  </p>
                   <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full rounded-md bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors disabled:opacity-50"
+                    onClick={() => setSubmitted(false)}
+                    className="text-indigo-600 hover:text-indigo-700 font-semibold"
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    Send Another Message
                   </button>
-                  {formStatus && (
-                    <p className={`mt-2 text-sm ${formStatus.includes("Error") ? "text-red-600" : "text-green-600"}`}>
-                      {formStatus}
-                    </p>
-                  )}
                 </div>
-              </form>
+              ) : (
+                <form onSubmit={handleSubmit} action="https://api.web3forms.com/submit" method="POST" className="space-y-5">
+                  <input type="hidden" name="access_key" value="f7fca587-9f13-4790-836e-6baeefa917a6" />
+                  <input type="hidden" name="from_name" value="Santori Solar Contact" />
+                  
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      required
+                      className="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-900 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all"
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-semibold text-slate-700 mb-2">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      id="phone"
+                      required
+                      className="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-900 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all"
+                      placeholder="+91 (10 digits)"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="monthly_bill" className="block text-sm font-semibold text-slate-700 mb-2">
+                      Monthly Bill *
+                    </label>
+                    <div className="relative">
+                      <span className="absolute left-4 top-2.5 text-slate-700 font-semibold">₹</span>
+                      <input
+                        type="text"
+                        name="monthly_bill"
+                        id="monthly_bill"
+                        required
+                        className="w-full pl-8 pr-4 py-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-900 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all"
+                        placeholder="e.g., 2500"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">
+                      Message *
+                    </label>
+                    <textarea
+                      name="message"
+                      id="message"
+                      rows={4}
+                      required
+                      className="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-900 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all resize-none"
+                      placeholder="Tell us about your solar requirements..."
+                    ></textarea>
+                  </div>
+                  <div>
+                    <button
+                      type="submit"
+                      className="w-full rounded-lg bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-md hover:bg-indigo-700 active:bg-indigo-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all duration-200"
+                    >
+                      Send Message
+                    </button>
+                  </div>
+                </form>
+              )}
             </div>
           </div>
         </div>
@@ -229,6 +251,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
     </main>
   );
 }

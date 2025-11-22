@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function SolarCalculator() {
     const [pincode, setPincode] = useState('');
@@ -161,9 +162,9 @@ export default function SolarCalculator() {
                         </div>
                     </div>
 
-                    <button className="w-full mt-8 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold py-4 rounded-xl transition-colors relative z-10">
+                    <Link href="/contact" className="block w-full mt-8 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold py-4 rounded-xl transition-colors relative z-10 text-center">
                         Get Detailed Quote
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
