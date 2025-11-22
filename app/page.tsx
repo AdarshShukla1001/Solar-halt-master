@@ -147,7 +147,7 @@ export default function Page() {
               </div>
             </div>
             <div className="relative rounded-xl overflow-hidden h-64 group">
-              <img src="/img/service-1.jpg" alt="Commercial Solar" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <img src="/img/commercial-solar-installation-solutions.webp" alt="Commercial Solar" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent flex items-end">
                 <div className="p-6">
                   <h3 className="text-white font-bold text-xl">Commercial</h3>

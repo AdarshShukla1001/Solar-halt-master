@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail, ChevronRight, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { MapPin, Phone, Mail, ChevronRight, Facebook, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -39,8 +39,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-indigo-500 flex-shrink-0" />
-                <a href="mailto:info@santorisolarsolutions.com" className="text-sm hover:text-white transition-colors">
-                  info@santorisolarsolutions.com
+                <a href="mailto:support@santorisolarsolutions.com" className="text-sm hover:text-white transition-colors">
+                  support@santorisolarsolutions.com
                 </a>
               </div>
             </div>
@@ -124,10 +124,8 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               {[
-                { icon: Facebook, href: "https://facebook.com/santorisolar" },
-                { icon: Twitter, href: "https://twitter.com/santorisolar" },
-                { icon: Linkedin, href: "https://linkedin.com/company/santorisolar" },
-                { icon: Instagram, href: "https://instagram.com/santorisolar" },
+                { icon: Facebook, href: "https://www.facebook.com/share/1BsAteEnPm" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/santori-solar-solutions-pvt-ltd/" },
               ].map((social, index) => (
                 <a
                   key={index}
