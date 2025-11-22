@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail, ChevronRight, Facebook, Linkedin } from "lucide-react";
+import { MapPin, Phone, Mail, ChevronRight, Facebook, Linkedin, Instagram } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -124,6 +124,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               {[
+                { icon: Instagram, href: "https://instagram.com/santorisolar" },
                 { icon: Facebook, href: "https://www.facebook.com/share/1BsAteEnPm" },
                 { icon: Linkedin, href: "https://www.linkedin.com/company/santori-solar-solutions-pvt-ltd/" },
               ].map((social, index) => (
