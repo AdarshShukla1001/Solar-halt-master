@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   title: "Santori Solar Solutions | Expert Solar Panel Installation",
   description: "Santori Solar Solutions offers expert solar panel installation services in Uttar Pradesh, Madhya Pradesh, Uttarakhand, Bihar, and Maharashtra. Go solar today!",
   keywords: ["Santori Solar", "Santori Solar Solutions", "Best Solar Company", "solar installation", "solar panels", "solar energy", "renewable energy", "Uttar Pradesh", "Madhya Pradesh", "Uttarakhand", "Bihar", "Maharashtra"],
+  icons: {
+    icon: "/img/logo_new.png",
+  },
   openGraph: {
     title: "Santori Solar Solutions | Trusted Solar Installations in India",
     description: "We provide top-quality solar installation services in UP, MP, Uttarakhand, Bihar, and Maharashtra. Residential, commercial, and industrial solar power solutions.",

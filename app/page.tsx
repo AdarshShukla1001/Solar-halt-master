@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
+import HeroCarousel from "@/components/HeroCarousel";
 
 // A Complete Redesign for a Modern, Intuitive, and Clean User Interface
 export default function Page() {
@@ -16,46 +17,47 @@ export default function Page() {
     <main className="bg-white text-slate-900 antialiased">
 
       {/* 1. Hero Section */}
-      <section className="relative bg-gradient-to-b from-slate-50 to-white overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/img/carousel-1.jpg"
-            alt="Solar panels on roof"
-            className="w-full h-full object-cover opacity-10"
-          />
-        </div>
-        <div className="container mx-auto px-6 lg:px-8 py-24 sm:py-32 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900">
-                Your Future, Powered by the Sun
-              </h1>
-              <p className="mt-6 text-lg leading-8 text-slate-600">
-                We design and install high-efficiency solar energy systems for homes and businesses, delivering energy independence and significant long-term savings.
-              </p>
-              <div className="mt-10 flex items-center justify-center lg:justify-start gap-x-6">
-                <Link
-                  href="/contact"
-                  className="rounded-md bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors"
-                >
-                  Get a Free Quote
-                </Link>
-                <Link href="#process" className="text-sm font-semibold leading-6 text-slate-700 group">
-                  How It Works <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
-                </Link>
+      <section className="relative overflow-hidden">
+        <div className="grid lg:grid-cols-2 gap-0 min-h-screen lg:min-h-auto">
+          {/* Left Content */}
+          <div className="relative bg-gradient-to-b from-slate-50 to-white flex items-center z-10">
+            <div className="container mx-auto px-6 lg:px-8 py-24 sm:py-32">
+              <div className="text-center lg:text-left">
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900">
+                  Your Future, Powered by the Sun
+                </h1>
+                <p className="mt-6 text-lg leading-8 text-slate-600">
+                  We design and install high-efficiency solar energy systems for homes and businesses, delivering energy independence and significant long-term savings.
+                </p>
+                <div className="mt-10 flex items-center justify-center lg:justify-start gap-x-6">
+                  <Link
+                    href="/contact"
+                    className="rounded-md bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors"
+                  >
+                    Get a Free Quote
+                  </Link>
+                  <Link href="#process" className="text-sm font-semibold leading-6 text-slate-700 group">
+                    How It Works <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
+                  </Link>
+                </div>
               </div>
             </div>
-            <div className="relative hidden lg:block">
-              <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="/img/solar1.png"
-                  alt="Solar panel installation"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-indigo-600 rounded-full opacity-10 blur-3xl"></div>
-              <div className="absolute -top-6 -right-6 w-48 h-48 bg-blue-600 rounded-full opacity-10 blur-3xl"></div>
-            </div>
+          </div>
+
+          {/* Right Carousel */}
+          <div className="relative hidden lg:block h-screen">
+            <HeroCarousel
+              images={[
+                { src: "/img/carousel-1.jpg", alt: "Solar panels installation 1" },
+                { src: "/img/carousel-2.jpg", alt: "Solar panels installation 2" },
+                { src: "/img/carousel-3.jpg", alt: "Solar panels installation 3" },
+                { src: "/img/solar1.png", alt: "Solar energy system" },
+              ]}
+              autoPlay={true}
+              interval={4000}
+            />
+            <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-indigo-600 rounded-full opacity-10 blur-3xl"></div>
+            <div className="absolute -top-6 -right-6 w-48 h-48 bg-blue-600 rounded-full opacity-10 blur-3xl"></div>
           </div>
         </div>
       </section>
