@@ -35,20 +35,24 @@ export default function ContactPage() {
   return (
     <main className="bg-white text-slate-900 antialiased">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+      <section className="relative bg-slate-900 overflow-hidden">
         <div className="absolute inset-0 z-0">
+          {/* Changed image source and removed opacity-10 for a vibrant look */}
           <img
-            src="/img/carousel-1.jpg"
-            alt="Customer service"
-            className="w-full h-full object-cover opacity-10"
+            src="/img/solar1.png" // Make sure this image exists in your public/img folder
+            alt="Solar panels on a roof"
+            className="w-full h-full object-cover" 
           />
+          {/* Added a dark overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-black/40"></div>
         </div>
         <div className="container mx-auto px-6 lg:px-8 py-24 sm:py-32 relative z-10">
           <div className="max-w-2xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900">
+            {/* Changed text color to white for contrast against the dark background */}
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-md">
               Let's Talk Solar
             </h1>
-            <p className="mt-6 text-lg leading-8 text-slate-600">
+            <p className="mt-6 text-lg leading-8 text-slate-100 drop-shadow-sm">
               Have questions about solar energy? Want to get started with your installation? We're here to help every step of the way.
             </p>
           </div>
@@ -169,22 +173,26 @@ export default function ContactPage() {
                       placeholder="+91 (10 digits)"
                     />
                   </div>
+                  
+                  {/* Replaced Pincode with City */}
                   <div>
-                    <label htmlFor="pincode" className="block text-sm font-semibold text-slate-700 mb-2">
-                      Pincode *
+                    <label htmlFor="city" className="block text-sm font-semibold text-slate-700 mb-2">
+                      City *
                     </label>
                     <input
                       type="text"
-                      name="pincode"
-                      id="pincode"
+                      name="city"
+                      id="city"
                       required
                       className="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-900 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all"
-                      placeholder="e.g., 222001"
+                      placeholder="e.g., Varanasi"
                     />
                   </div>
+
+                  {/* Monthly Bill - Made Optional */}
                   <div>
                     <label htmlFor="monthly_bill" className="block text-sm font-semibold text-slate-700 mb-2">
-                      Monthly Bill *
+                      Monthly Bill (Optional)
                     </label>
                     <div className="relative">
                       <span className="absolute left-4 top-2.5 text-slate-700 font-semibold">₹</span>
@@ -192,21 +200,21 @@ export default function ContactPage() {
                         type="text"
                         name="monthly_bill"
                         id="monthly_bill"
-                        required
                         className="w-full pl-8 pr-4 py-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-900 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all"
                         placeholder="e.g., 2500"
                       />
                     </div>
                   </div>
+
+                  {/* Message - Made Optional */}
                   <div>
                     <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-2">
-                      Message *
+                      Message (Optional)
                     </label>
                     <textarea
                       name="message"
                       id="message"
                       rows={4}
-                      required
                       className="w-full px-4 py-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-900 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all resize-none"
                       placeholder="Tell us about your solar requirements..."
                     ></textarea>

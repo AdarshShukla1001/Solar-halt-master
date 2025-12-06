@@ -7,45 +7,37 @@ export default function AboutPage() {
   return (
     <main className="bg-white text-slate-900 antialiased">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+        {/* Background Image Layer - Feature Image moved here */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/img/about.jpg"
-            alt="Solar company team"
-            className="w-full h-full object-cover opacity-10"
+            src="/img/feature.jpg"
+            alt="Solar company team working"
+            className="w-full h-full object-cover"
           />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-slate-900/60"></div>
         </div>
-        <div className="container mx-auto px-6 lg:px-8 py-24 sm:py-32 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900">
-                Powering a Sustainable Future
-              </h1>
-              <p className="mt-6 text-lg leading-8 text-slate-600">
-                At Santori Solar Solutions, we're committed to making clean, renewable energy accessible to everyone. With years of experience and a dedicated team of experts, we're leading the charge towards a greener tomorrow.
-              </p>
-              <div className="mt-10 flex items-center justify-center lg:justify-start gap-x-6">
-                <Link
-                  href="/contact"
-                  className="rounded-md bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors"
-                >
-                  Contact Us
-                </Link>
-                <Link href="#team" className="text-sm font-semibold leading-6 text-slate-700 group">
-                  Meet Our Team <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
-                </Link>
-              </div>
-            </div>
-            <div className="relative hidden lg:block">
-              <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="/img/feature.jpg"
-                  alt="Our team at work"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-indigo-600 rounded-full opacity-10 blur-3xl"></div>
-              <div className="absolute -top-6 -right-6 w-48 h-48 bg-blue-600 rounded-full opacity-10 blur-3xl"></div>
+
+        {/* Content Layer */}
+        <div className="container mx-auto px-6 lg:px-8 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-lg">
+              Powering a Sustainable Future
+            </h1>
+            <p className="mt-6 text-lg md:text-xl leading-8 text-slate-100 drop-shadow-md">
+              At Santori Solar Solutions, we're committed to making clean, renewable energy accessible to everyone. With years of experience and a dedicated team of experts, we're leading the charge towards a greener tomorrow.
+            </p>
+            <div className="mt-10 flex items-center justify-center gap-x-6">
+              <Link
+                href="/contact"
+                className="rounded-full bg-indigo-600 px-8 py-3 text-sm font-semibold text-white shadow-lg hover:bg-indigo-500 hover:scale-105 transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Contact Us
+              </Link>
+              <Link href="#team" className="text-sm font-semibold leading-6 text-white hover:text-indigo-200 group flex items-center gap-2">
+                Meet Our Team <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
+              </Link>
             </div>
           </div>
         </div>
